@@ -1,0 +1,12 @@
+{
+  "id": "git-autocommit",
+  "name": "Git AutoCommit",
+  "description": "Stages and commits workspace changes in background before every agent turn. Uses child_process.execFile (no shell) for git commands.",
+  "activation": {
+    "onStartup": true
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false
+  }
+}
