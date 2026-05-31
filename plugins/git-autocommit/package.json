@@ -1,0 +1,35 @@
+{
+  "name": "@rubengrick2/git-autocommit",
+  "version": "2.0.0",
+  "description": "Auto-stages and commits repo changes before every OpenClaw agent turn",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "openclaw.plugin.json"
+  ],
+  "openclaw": {
+    "extensions": [
+      "./index.js"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rubemaster/git-autocommit-plugin.git"
+  },
+  "keywords": [
+    "openclaw",
+    "plugin",
+    "git",
+    "autocommit"
+  ],
+  "license": "MIT",
+  "author": "Cashgrabber",
+  "bugs": {
+    "url": "https://github.com/rubemaster/git-autocommit-plugin/issues"
+  },
+  "homepage": "https://github.com/rubemaster/git-autocommit-plugin#readme"
+}
