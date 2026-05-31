@@ -1,6 +1,6 @@
 {
   "name": "@rubengrick2/git-autocommit",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Auto-stages and commits repo changes before every OpenClaw agent turn",
   "type": "module",
   "main": "./index.js",
@@ -12,13 +12,20 @@
     "openclaw.plugin.json"
   ],
   "openclaw": {
-    "extensions": ["./index.js"]
+    "extensions": [
+      "./index.js"
+    ]
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cashgrabber/tribev2.git"
   },
-  "keywords": ["openclaw", "plugin", "git", "autocommit"],
+  "keywords": [
+    "openclaw",
+    "plugin",
+    "git",
+    "autocommit"
+  ],
   "license": "MIT",
   "author": "Cashgrabber"
 }

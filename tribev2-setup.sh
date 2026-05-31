@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PLUGIN_DIR="$REPO_DIR/plugins/git-autocommit"
-
-echo "🔧 Setting up OpenClaw git-autocommit plugin for tribev2"
+echo "🔧 Setting up OpenClaw git-autocommit plugin"
 echo ""
 
 # 1. Check OpenClaw available
@@ -13,31 +10,11 @@ if ! command -v openclaw &>/dev/null; then
   exit 1
 fi
 
-# 2. Write config
-OC_CONFIG="$HOME/.openclaw/openclaw.json"
-mkdir -p "$(dirname "$OC_CONFIG")"
-python3 -c "
-import json
-try:
-    with open('$OC_CONFIG') as f:
-        cfg = json.load(f)
-except (FileNotFoundError, json.JSONDecodeError):
-    cfg = {'plugins': {'entries': {}, 'load': {'paths': []}}}
-
-plugins = cfg.setdefault('plugins', {})
-entries = plugins.setdefault('entries', {})
-entries['git-autocommit'] = {'enabled': True}
-
-load = plugins.setdefault('load', {})
-paths = load.setdefault('paths', [])
-p = '$PLUGIN_DIR'
-if p not in paths:
-    paths.append(p)
-
-with open('$OC_CONFIG', 'w') as f:
-    json.dump(cfg, f, indent=2)
-print('   ✅ git-autocommit enabled in config')
-"
+# 2. Install plugin from npm
+echo "   → Installing @rubengrick2/git-autocommit..."
+openclaw plugins install npm:@rubengrick2/git-autocommit \
+  --dangerously-force-unsafe-install 2>&1 | sed 's/^/     /'
 
 echo ""
-echo "✅ Done. Dude 🛹 will auto-commit tribev2 changes."
+echo "✅ Done. Dude 🛹 will auto-commit repo changes before every turn."
+echo "   Check 'git log' after making changes to see auto-snapshots."
